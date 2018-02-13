@@ -71,6 +71,16 @@ type color =
   | Cyan
   | Magenta;
 
+type modifier =
+  | Reset
+  | Bold
+  | Dim
+  | Italic
+  | Underline
+  | Inverse
+  | Hidden
+  | Strikethrough;
+
 let color = (c, str) =>
   switch c {
   | Red => Recolor.red(str)
@@ -82,10 +92,22 @@ let color = (c, str) =>
   | White => Recolor.white(str)
   };
 
+let modify = (c, str) =>
+  switch c {
+  | Reset => Recolor.reset(str)
+  | Bold => Recolor.bold(str)
+  | Dim => Recolor.dim(str)
+  | Italic => Recolor.italic(str)
+  | Underline => Recolor.underline(str)
+  | Inverse => Recolor.inverse(str)
+  | Hidden => Recolor.hidden(str)
+  | Strikethrough => Recolor.strikethrough(str)
+  };
+
 let myString = Recolor.bold("My Bold String");
 
 Js.log(myString);
 
-let hello = color(Yellow, "Style this string");
+let hello = modify(Italic, "Style this string");
 
 Js.log(hello);
