@@ -1,8 +1,8 @@
 open Styles;
 
-let startWrap = v => {j|\u001b[$v m|j};
+let startWrap = v => {j|\u001b[$v|j} ++ "m";
 
-let endWrap = v => {j|\u001b[$v m|j};
+let endWrap = v => {j|\u001b[$v|j} ++ "m";
 
 module Recolor = {
   type t;
@@ -81,5 +81,11 @@ let color = (c, str) =>
   | Cyan => Recolor.cyan(str)
   | White => Recolor.white(str)
   };
-/* let hello = color(Red, "Style this string"); */
-/* Js.log(hello); */
+
+let myString = Recolor.bold("My Bold String");
+
+Js.log(myString);
+
+let hello = color(Yellow, "Style this string");
+
+Js.log(hello);
