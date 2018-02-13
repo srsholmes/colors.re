@@ -1,0 +1,19 @@
+{
+  "name": "re-color",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
+  "keywords": [
+    "BuckleScript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.3.2",
+    "bs-platform": "^2.1.0",
+    "jest": "^22.1.2"
+  }
+}

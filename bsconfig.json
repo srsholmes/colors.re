@@ -1,0 +1,15 @@
+{
+  "name": "re-color",
+  "bsc-flags": ["-bs-super-errors"],
+  "sources": [
+    {
+      "dir": "src"
+    },
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
+  "bs-dev-dependencies": ["@glennsl/bs-jest"],
+  "refmt": 3
+}
