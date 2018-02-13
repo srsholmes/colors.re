@@ -61,3 +61,25 @@ module Recolor = {
   let bgWhite = str =>
     startWrap(Styles.bgWhite[0]) ++ str ++ endWrap(Styles.bgWhite[1]);
 };
+
+type color =
+  | Red
+  | Yellow
+  | Green
+  | Blue
+  | White
+  | Cyan
+  | Magenta;
+
+let color = (c, str) =>
+  switch c {
+  | Red => Recolor.red(str)
+  | Yellow => Recolor.yellow(str)
+  | Green => Recolor.green(str)
+  | Blue => Recolor.blue(str)
+  | Magenta => Recolor.magenta(str)
+  | Cyan => Recolor.cyan(str)
+  | White => Recolor.white(str)
+  };
+/* let hello = color(Red, "Style this string"); */
+/* Js.log(hello); */

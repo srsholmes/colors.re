@@ -7,6 +7,10 @@ Console colours for your terminal in reasonml. Inspired by [Chalk](https://githu
 ```
 let log = Js.log;
 
+let helloString = color(Red, "Style this string red");
+
+Js.log(helloString);
+
 let (<<) = Recolor.compose;
 
 let (>>) = Recolor.pipe;
