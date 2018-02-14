@@ -104,7 +104,7 @@ let modify = (m, str) =>
   | Strikethrough => Recolor.strikethrough(str)
   };
 
-let keyword = (keyword, str, color) => {
+let changeKeyword = (keyword, str, color) => {
   let containsString = Js.String.includes(keyword, str);
   containsString ?
     Js.String.split(" ", str)
@@ -113,24 +113,35 @@ let keyword = (keyword, str, color) => {
     str;
 };
 
-let recolor = (~color=?, ~modifier=?, ~keyword=?, str) =>
-  switch color {
-  | Some(c) =>
-    switch modifier {
-    | Some(m) => modify(m, str) |> changeColor(c)
-    | None => changeColor(c, str)
-    }
-  | None =>
-    switch modifier {
-    | Some(m) => modify(m, str)
-    | None => str
-    }
-  };
+let recolor = (~color=?, ~modifier=?, ~keyword=?, str) => {
+  let returnVal =
+    switch keyword {
+    | Some(k) => changeKeyword(k, str, Red)
+    | None =>
+      switch color {
+      | Some(c) =>
+        switch modifier {
+        | Some(m) => modify(m, str) |> changeColor(c)
+        | None => changeColor(c, str)
+        }
+      | None =>
+        switch modifier {
+        | Some(m) => modify(m, str)
+        | None => str
+        }
+      }
+    };
+  returnVal;
+};
 
 let myString = recolor(~color=Red, ~modifier=Underline, "this is my string");
 
+let keyWordTest = recolor(~keyword="Dog", "Hello my Dog");
+
+Js.log(keyWordTest);
+
 Js.log(myString);
 
-let myTester = keyword("hello", "hello world hello", Yellow);
+let myTester = changeKeyword("hello", "hello wold hello", Green);
 
 Js.log(myTester);
