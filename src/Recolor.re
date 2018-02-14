@@ -4,6 +4,25 @@ let startWrap = v => {j|\u001b[$v|j} ++ "m";
 
 let endWrap = v => {j|\u001b[$v|j} ++ "m";
 
+type color =
+  | Red
+  | Yellow
+  | Green
+  | Blue
+  | White
+  | Cyan
+  | Magenta;
+
+type modifier =
+  | Reset
+  | Bold
+  | Dim
+  | Italic
+  | Underline
+  | Inverse
+  | Hidden
+  | Strikethrough;
+
 module Recolor = {
   type t;
   let compose = (f, g, x) => f(g(x));
@@ -62,26 +81,7 @@ module Recolor = {
     startWrap(Styles.bgWhite[0]) ++ str ++ endWrap(Styles.bgWhite[1]);
 };
 
-type color =
-  | Red
-  | Yellow
-  | Green
-  | Blue
-  | White
-  | Cyan
-  | Magenta;
-
-type modifier =
-  | Reset
-  | Bold
-  | Dim
-  | Italic
-  | Underline
-  | Inverse
-  | Hidden
-  | Strikethrough;
-
-let color = (c, str) =>
+let changeColor = (c, str) =>
   switch c {
   | Red => Recolor.red(str)
   | Yellow => Recolor.yellow(str)
@@ -92,8 +92,8 @@ let color = (c, str) =>
   | White => Recolor.white(str)
   };
 
-let modify = (c, str) =>
-  switch c {
+let modify = (m, str) =>
+  switch m {
   | Reset => Recolor.reset(str)
   | Bold => Recolor.bold(str)
   | Dim => Recolor.dim(str)
@@ -104,10 +104,33 @@ let modify = (c, str) =>
   | Strikethrough => Recolor.strikethrough(str)
   };
 
-let myString = Recolor.bold("My Bold String");
+let keyword = (keyword, str, color) => {
+  let containsString = Js.String.includes(keyword, str);
+  containsString ?
+    Js.String.split(" ", str)
+    |> Js.Array.map(x => x === keyword ? changeColor(color, x) : x)
+    |> Js.Array.joinWith(" ") :
+    str;
+};
+
+let recolor = (~color=?, ~modifier=?, ~keyword=?, str) =>
+  switch color {
+  | Some(c) =>
+    switch modifier {
+    | Some(m) => modify(m, str) |> changeColor(c)
+    | None => changeColor(c, str)
+    }
+  | None =>
+    switch modifier {
+    | Some(m) => modify(m, str)
+    | None => str
+    }
+  };
+
+let myString = recolor(~color=Red, ~modifier=Underline, "this is my string");
 
 Js.log(myString);
 
-let hello = modify(Italic, "Style this string");
+let myTester = keyword("hello", "hello world hello", Yellow);
 
-Js.log(hello);
+Js.log(myTester);
