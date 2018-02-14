@@ -104,6 +104,7 @@ let modify = (m, str) =>
   | Strikethrough => Recolor.strikethrough(str)
   };
 
+/* Maybe use https://bucklescript.github.io/bucklescript/api/Js.String.html#VALreplaceByRe */
 let changeKeyword = (keyword, str, color) => {
   let containsString = Js.String.includes(keyword, str);
   containsString ?
