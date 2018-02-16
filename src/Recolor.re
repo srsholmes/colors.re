@@ -168,14 +168,13 @@ let recolor = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
     |> applyBackgroud(bg);
   modifyStr;
 };
+/* let myString =
+     recolor(
+       ~color=Yellow,
+       ~modifier=Bold,
+       ~bg=Blue,
+       ~keywordOptions={colorType: Green, word: "my"},
+       "this is my string"
+     );
 
-let myString =
-  recolor(
-    ~color=Red,
-    ~modifier=Bold,
-    ~bg=White,
-    ~keywordOptions={colorType: Blue, word: "my"},
-    "this is my string"
-  );
-
-Js.log(myString);
+   Js.log(myString); */

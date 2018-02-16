@@ -7,9 +7,18 @@
     "clean": "bsb -clean-world"
   },
   "keywords": [
-    "BuckleScript"
+    "BuckleScript",
+    "reasonml",
+    "reason",
+    "colours",
+    "re-color",
+    "Recolor",
+    "terminal",
+    "colors",
+    "color",
+    "chalk"
   ],
-  "author": "",
+  "author": "Simon Holmes",
   "license": "MIT",
   "devDependencies": {
     "@glennsl/bs-jest": "^0.3.2",

@@ -7,9 +7,10 @@ Console colours for your terminal in reasonml. Inspired by [Chalk](https://githu
 ```
 let myString =
   recolor(
-    ~color=Red,
+    ~color=Yellow,
     ~modifier=Bold,
-    ~keywordOptions={colorType: Blue, word: "my"},
+    ~bg=Blue,
+    ~keywordOptions={colorType: Green, word: "my"},
     "this is my string"
   );
 
