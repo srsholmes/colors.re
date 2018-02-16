@@ -23,6 +23,11 @@ type modifier =
   | Hidden
   | Strikethrough;
 
+type keywordOptions = {
+  colorType: color,
+  word: string
+};
+
 module Recolor = {
   type t;
   let compose = (f, g, x) => f(g(x));
@@ -104,45 +109,56 @@ let modify = (m, str) =>
   | Strikethrough => Recolor.strikethrough(str)
   };
 
-/* Maybe use https://bucklescript.github.io/bucklescript/api/Js.String.html#VALreplaceByRe */
 let changeKeyword = (keyword, str, color) => {
   let containsString = Js.String.includes(keyword, str);
   containsString ?
-    Js.String.split(" ", str)
-    |> Js.Array.map(x => x === keyword ? changeColor(color, x) : x)
-    |> Js.Array.joinWith(" ") :
-    str;
+    Js.String.replace(keyword, changeColor(color, keyword), str) : str;
 };
 
-let recolor = (~color=?, ~modifier=?, ~keyword=?, str) => {
-  let returnVal =
-    switch keyword {
-    | Some(k) => changeKeyword(k, str, Red)
-    | None =>
-      switch color {
-      | Some(c) =>
-        switch modifier {
-        | Some(m) => modify(m, str) |> changeColor(c)
-        | None => changeColor(c, str)
-        }
-      | None =>
-        switch modifier {
-        | Some(m) => modify(m, str)
-        | None => str
-        }
-      }
-    };
-  returnVal;
+let changeColor = (color, keywordOptions, str) =>
+  switch color {
+  | Some(c) =>
+    switch keywordOptions {
+    | Some(k) =>
+      let {word} = k;
+      /* Only change the strings whuch arent keyword */
+      let changedStrings =
+        Js.String.split(" ", str)
+        |> Js.Array.filter(x => x !== word)
+        |> Js.Array.map(x => changeColor(c, x))
+        |> Js.Array.joinWith(" ");
+      changedStrings;
+    | None => changeColor(c, str)
+    }
+  | None => str
+  };
+
+let doModifier = (modifier, str) =>
+  switch modifier {
+  | Some(m) => modify(m, str)
+  | None => str
+  };
+
+let highlightKeyword = (options, str) =>
+  switch options {
+  | Some({colorType, word}) => changeKeyword(word, str, colorType)
+  | None => str
+  };
+
+let recolor = (~color=?, ~modifier=?, ~keywordOptions=?, str) => {
+  let modifyStr =
+    highlightKeyword(keywordOptions, str)
+    |> doModifier(modifier)
+    |> changeColor(color, keywordOptions);
+  modifyStr;
 };
 
-let myString = recolor(~color=Red, ~modifier=Underline, "this is my string");
-
-let keyWordTest = recolor(~keyword="Dog", "Hello my Dog");
-
-Js.log(keyWordTest);
+let myString =
+  recolor(
+    ~color=Red,
+    ~modifier=Bold,
+    ~keywordOptions={colorType: Blue, word: "my"},
+    "this is my string"
+  );
 
 Js.log(myString);
-
-let myTester = changeKeyword("hello", "hello wold hello", Green);
-
-Js.log(myTester);
