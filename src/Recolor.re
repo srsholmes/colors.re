@@ -119,13 +119,11 @@ let changeColor = (color, keywordOptions, str) =>
   switch color {
   | Some(c) =>
     switch keywordOptions {
-    | Some(k) =>
-      let {word} = k;
+    | Some({word}) =>
       /* Only change the strings whuch arent keyword */
       let changedStrings =
         Js.String.split(" ", str)
-        |> Js.Array.filter(x => x !== word)
-        |> Js.Array.map(x => changeColor(c, x))
+        |> Js.Array.map(x => x === word ? x : changeColor(c, x))
         |> Js.Array.joinWith(" ");
       changedStrings;
     | None => changeColor(c, str)
