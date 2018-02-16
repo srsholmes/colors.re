@@ -16,7 +16,9 @@
     "terminal",
     "colors",
     "color",
-    "chalk"
+    "chalk",
+    "logging",
+    "logger"
   ],
   "author": "Simon Holmes",
   "license": "MIT",
