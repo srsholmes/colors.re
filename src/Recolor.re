@@ -143,11 +143,29 @@ let highlightKeyword = (options, str) =>
   | None => str
   };
 
-let recolor = (~color=?, ~modifier=?, ~keywordOptions=?, str) => {
+let changeBackground = (c, str) =>
+  switch c {
+  | Red => Recolor.bgRed(str)
+  | Yellow => Recolor.bgYellow(str)
+  | Green => Recolor.bgGreen(str)
+  | Blue => Recolor.bgBlue(str)
+  | Magenta => Recolor.bgMagenta(str)
+  | Cyan => Recolor.bgCyan(str)
+  | White => Recolor.bgWhite(str)
+  };
+
+let applyBackgroud = (bg, str) =>
+  switch bg {
+  | Some(b) => changeBackground(b, str)
+  | None => str
+  };
+
+let recolor = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
   let modifyStr =
     highlightKeyword(keywordOptions, str)
     |> doModifier(modifier)
-    |> changeColor(color, keywordOptions);
+    |> changeColor(color, keywordOptions)
+    |> applyBackgroud(bg);
   modifyStr;
 };
 
@@ -155,6 +173,7 @@ let myString =
   recolor(
     ~color=Red,
     ~modifier=Bold,
+    ~bg=White,
     ~keywordOptions={colorType: Blue, word: "my"},
     "this is my string"
   );
