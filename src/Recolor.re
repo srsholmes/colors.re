@@ -53,17 +53,15 @@ let changeKeyword = (keyword, str, color) => {
     Js.String.replace(keyword, changeColor(color, keyword), str) : str;
 };
 
-let changeColor = (color, keywordOptions, str) =>
+let doColorChange = (color, keywordOptions, str) =>
   switch color {
   | Some(c) =>
     switch keywordOptions {
     | Some({word}) =>
       /* Only change the strings which arent keyword */
-      let changedStrings =
-        Js.String.split(" ", str)
-        |> Js.Array.map(x => x === word ? x : changeColor(c, x))
-        |> Js.Array.joinWith(" ");
-      changedStrings;
+      Js.String.split(" ", str)
+      |> Js.Array.map(x => x === word ? x : changeColor(c, x))
+      |> Js.Array.joinWith(" ")
     | None => changeColor(c, str)
     }
   | None => str
@@ -102,16 +100,16 @@ let recolor = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
   let modifyStr =
     highlightKeyword(keywordOptions, str)
     |> doModifier(modifier)
-    |> changeColor(color, keywordOptions)
+    |> doColorChange(color, keywordOptions)
     |> applyBackgroud(bg);
   modifyStr;
 };
 
 let myString =
   recolor(
-    ~color=Yellow,
+    ~color=Blue,
     ~modifier=Bold,
-    ~bg=Blue,
+    ~bg=White,
     ~keywordOptions={colorType: Green, word: "my"},
     "this is my string"
   );
