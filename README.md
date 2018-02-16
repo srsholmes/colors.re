@@ -5,23 +5,15 @@ Console colours for your terminal in reasonml. Inspired by [Chalk](https://githu
 ## Usage:
 
 ```
-let log = Js.log;
+let myString =
+  recolor(
+    ~color=Red,
+    ~modifier=Bold,
+    ~keywordOptions={colorType: Blue, word: "my"},
+    "this is my string"
+  );
 
-let helloString = color(Red, "Style this string red");
-
-Js.log(helloString);
-
-let (<<) = Recolor.compose;
-
-let (>>) = Recolor.pipe;
-
-let myString = Recolor.bold("My Bold String");
-
-log(myString);
-
-let composedStyle = Recolor.bold << Recolor.blue << Recolor.underline;
-
-log(composedStyle("This string will be bold, blue and underlined"));
+Js.log(myString);
 ```
 
 # Build
