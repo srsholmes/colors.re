@@ -48,6 +48,21 @@ let changeColor = (c, str) =>
   | Magenta => Utils.magenta(str)
   | Cyan => Utils.cyan(str)
   | White => Utils.white(str)
+  | BgBlack => Utils.bgBlack(str)
+  | BgRed => Utils.bgRed(str)
+  | BgGreen => Utils.bgGreen(str)
+  | BgYellow => Utils.bgYellow(str)
+  | BgBlue => Utils.bgBlue(str)
+  | BgMagenta => Utils.bgMagenta(str)
+  | BgCyan => Utils.bgCyan(str)
+  | BgWhite => Utils.bgWhite(str)
+  | BgRedBright => Utils.bgRedBright(str)
+  | BgGreenBright => Utils.bgGreenBright(str)
+  | BgYellowBright => Utils.bgYellowBright(str)
+  | BgBlueBright => Utils.bgBlueBright(str)
+  | BgMagentaBright => Utils.bgMagentaBright(str)
+  | BgCyanBright => Utils.bgCyanBright(str)
+  | BgWhiteBright => Utils.bgWhiteBright(str)
   };
 
 let modify = (m, str) =>
