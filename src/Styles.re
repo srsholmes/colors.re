@@ -26,4 +26,12 @@ module Styles = {
   let bgMagenta = [|"45", "49"|];
   let bgCyan = [|"46", "49"|];
   let bgWhite = [|"47", "49"|];
+  let bgBlackBright = [|"100", "49"|];
+  let bgRedBright = [|"101", "49"|];
+  let bgGreenBright = [|"102", "49"|];
+  let bgYellowBright = [|"103", "49"|];
+  let bgBlueBright = [|"104", "49"|];
+  let bgMagentaBright = [|"105", "49"|];
+  let bgCyanBright = [|"106", "49"|];
+  let bgWhiteBright = [|"107", "49"|];
 };

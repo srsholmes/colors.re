@@ -7,7 +7,22 @@ type color =
   | Blue
   | White
   | Cyan
-  | Magenta;
+  | Magenta
+  | BgBlack
+  | BgRed
+  | BgGreen
+  | BgYellow
+  | BgBlue
+  | BgMagenta
+  | BgCyan
+  | BgWhite
+  | BgRedBright
+  | BgGreenBright
+  | BgYellowBright
+  | BgBlueBright
+  | BgMagentaBright
+  | BgCyanBright
+  | BgWhiteBright;
 
 type modifier =
   | Reset
@@ -88,6 +103,21 @@ let changeBackground = (c, str) =>
   | Magenta => Utils.bgMagenta(str)
   | Cyan => Utils.bgCyan(str)
   | White => Utils.bgWhite(str)
+  | BgBlack => Utils.bgBlack(str)
+  | BgRed => Utils.bgRed(str)
+  | BgGreen => Utils.bgGreen(str)
+  | BgYellow => Utils.bgYellow(str)
+  | BgBlue => Utils.bgBlue(str)
+  | BgMagenta => Utils.bgMagenta(str)
+  | BgCyan => Utils.bgCyan(str)
+  | BgWhite => Utils.bgWhite(str)
+  | BgRedBright => Utils.bgRedBright(str)
+  | BgGreenBright => Utils.bgGreenBright(str)
+  | BgYellowBright => Utils.bgYellowBright(str)
+  | BgBlueBright => Utils.bgBlueBright(str)
+  | BgMagentaBright => Utils.bgMagentaBright(str)
+  | BgCyanBright => Utils.bgCyanBright(str)
+  | BgWhiteBright => Utils.bgWhiteBright(str)
   };
 
 let applyBackgroud = (bg, str) =>
@@ -107,9 +137,9 @@ let recolor = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
 
 let myString =
   recolor(
-    ~color=Blue,
+    ~color=White,
     ~modifier=Bold,
-    ~bg=White,
+    ~bg=BgBlueBright,
     ~keywordOptions={colorType: Green, word: "my"},
     "this is my string"
   );

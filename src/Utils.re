@@ -37,4 +37,19 @@ module Utils = {
   let bgMagenta = makeString(Styles.bgMagenta[0], Styles.bgMagenta[1]);
   let bgCyan = makeString(Styles.bgCyan[0], Styles.bgCyan[1]);
   let bgWhite = makeString(Styles.bgWhite[0], Styles.bgWhite[1]);
+  let bgBlackBright =
+    makeString(Styles.bgBlackBright[0], Styles.bgBlackBright[1]);
+  let bgRedBright = makeString(Styles.bgRedBright[0], Styles.bgRedBright[1]);
+  let bgGreenBright =
+    makeString(Styles.bgGreenBright[0], Styles.bgGreenBright[1]);
+  let bgYellowBright =
+    makeString(Styles.bgYellowBright[0], Styles.bgYellowBright[1]);
+  let bgBlueBright =
+    makeString(Styles.bgBlueBright[0], Styles.bgBlueBright[1]);
+  let bgMagentaBright =
+    makeString(Styles.bgMagentaBright[0], Styles.bgMagentaBright[1]);
+  let bgCyanBright =
+    makeString(Styles.bgCyanBright[0], Styles.bgCyanBright[1]);
+  let bgWhiteBright =
+    makeString(Styles.bgWhiteBright[0], Styles.bgWhiteBright[1]);
 };
