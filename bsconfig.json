@@ -1,5 +1,5 @@
 {
-  "name": "re-color",
+  "name": "colors.re",
   "bsc-flags": ["-bs-super-errors"],
   "sources": [
     {

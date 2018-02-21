@@ -1,12 +1,12 @@
-# Recolor
+# colors.re
 
-Console colours for your terminal in reasonml. Very much inspired from [Chalk](https://github.com/chalk/chalk) and [Colors.js](https://github.com/Marak/colors.js), go check them out.
+Terminal utility to display colours in your terminal written in reasonml. Very much inspired from [Chalk](https://github.com/chalk/chalk) and [Colors.js](https://github.com/Marak/colors.js), go check them out.
 
 ## Usage:
 
 ```
 let myString =
-  recolor(
+  colors(
     ~color=White,
     ~modifier=Bold,
     ~bg=BgBlueBright,
@@ -59,6 +59,8 @@ Support color detection.
 
 ## TODO:
 
-Tests
+Unit Tests.
+Color conversions.
 256/Truecolor support, need to finish support detection for this.
 Optimise performance.
+Publish to npm.

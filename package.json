@@ -1,5 +1,5 @@
 {
-  "name": "re-color",
+  "name": "colors.re",
   "version": "0.0.1",
   "scripts": {
     "build": "bsb -make-world",
@@ -12,7 +12,7 @@
     "reasonml",
     "reason",
     "colours",
-    "re-color",
+    "colors.re",
     "Recolor",
     "terminal",
     "colors",
