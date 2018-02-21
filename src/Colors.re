@@ -149,14 +149,3 @@ let colors = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
     |> applyBackgroud(bg);
   modifyStr;
 };
-/* Usage: */
-/* let myString =
-     colors(
-       ~color=White,
-       ~modifier=Bold,
-       ~bg=BgBlueBright,
-       ~keywordOptions={colorType: Green, word: "my"},
-       "this is my string"
-     );
-
-   Js.log(myString); */
