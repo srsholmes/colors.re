@@ -17,6 +17,6 @@ module Convert = {
   };
 };
 
-let convertTest = Convert.RGB.hex([0, 100, 0]);
+let convertTest = Convert.RGB.hex([92, 191, 84]);
 
 Js.log(convertTest);
