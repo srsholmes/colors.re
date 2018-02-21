@@ -1,6 +1,6 @@
 open Jest;
 
-open Recolor;
+open Colors;
 
 describe("Expect", () =>
   Expect.(test("toBe", () =>
