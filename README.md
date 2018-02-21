@@ -19,6 +19,7 @@ Js.log(myString); // White text with blue background, with highlighted word "my"
 
 ## Types:
 
+```
 type color =
 | Red
 | Yellow
@@ -52,6 +53,7 @@ type modifier =
 | Inverse
 | Hidden
 | Strikethrough;
+```
 
 ## In Progress:
 
