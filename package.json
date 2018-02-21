@@ -1,13 +1,14 @@
 {
   "name": "re-color",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world"
   },
+  "description": "Style terminal strings with ReasonMl.",
   "keywords": [
-    "BuckleScript",
+    "buckleScript",
     "reasonml",
     "reason",
     "colours",
@@ -20,6 +21,9 @@
     "logging",
     "logger"
   ],
+  "homepage": "https://github.com/srsholmes/Recolor/",
+  "repository": "https://github.com/srsholmes/Recolor/",
+  "bugs": "https://github.com/srsholmes/Recolor/issues",
   "author": "Simon Holmes",
   "license": "MIT",
   "devDependencies": {

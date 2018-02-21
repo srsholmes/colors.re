@@ -1,30 +1,63 @@
 # Recolor
 
-Console colours for your terminal in reasonml. Inspired by [Chalk](https://github.com/chalk/chalk) and [Colors.js](https://github.com/Marak/colors.js), go check them out.
+Console colours for your terminal in reasonml. Very much inspired from [Chalk](https://github.com/chalk/chalk) and [Colors.js](https://github.com/Marak/colors.js), go check them out.
 
 ## Usage:
 
 ```
 let myString =
   recolor(
-    ~color=Yellow,
+    ~color=White,
     ~modifier=Bold,
-    ~bg=Blue,
+    ~bg=BgBlueBright,
     ~keywordOptions={colorType: Green, word: "my"},
     "this is my string"
   );
 
-Js.log(myString);
+Js.log(myString); // White text with blue background, with highlighted word "my" in Green
 ```
 
-# Build
+## Types:
 
-```
-npm run build
-```
+type color =
+| Red
+| Yellow
+| Green
+| Blue
+| White
+| Cyan
+| Magenta
+| BgBlack
+| BgRed
+| BgGreen
+| BgYellow
+| BgBlue
+| BgMagenta
+| BgCyan
+| BgWhite
+| BgRedBright
+| BgGreenBright
+| BgYellowBright
+| BgBlueBright
+| BgMagentaBright
+| BgCyanBright
+| BgWhiteBright;
 
-# Build + Watch
+type modifier =
+| Reset
+| Bold
+| Dim
+| Italic
+| Underline
+| Inverse
+| Hidden
+| Strikethrough;
 
-```
-npm run watch
-```
+## In Progress:
+
+Support color detection.
+
+## TODO:
+
+256/Truecolor support, need to finish support detection for this.
+Optimise performance.
