@@ -61,8 +61,8 @@ Support color detection.
 
 ## TODO:
 
-Unit Tests.
-Color conversions.
-256/Truecolor support, need to finish support detection for this.
-Optimise performance.
-Publish to npm.
+* Unit Tests.
+* Color conversions.
+* 256/Truecolor support, need to finish support detection for this.
+* Optimise performance.
+* Publish to npm.
