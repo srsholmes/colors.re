@@ -59,5 +59,6 @@ Support color detection.
 
 ## TODO:
 
+Tests
 256/Truecolor support, need to finish support detection for this.
 Optimise performance.
