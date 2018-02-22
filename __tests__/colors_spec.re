@@ -22,6 +22,17 @@ let () =
           expect(colors(~bg=BgRed, "start"))
           |> toBe([%raw {| '\u001b[41m' + 'start' + '\u001b[49m' |}])
         );
+        test("colors should hightlight keyword", () =>
+          expect(
+            colors(
+              ~keywordOptions={colorType: Green, word: "World"},
+              "Hello World"
+            )
+          )
+          |> toBe(
+               [%raw {| 'Hello ' + '\u001b[32m' + 'World' + '\u001b[39m' |}]
+             )
+        );
         test("colors should apply multiple changes to a string", () =>
           expect(colors(~bg=BgRed, ~color=Blue, "start"))
           |> toBe(
