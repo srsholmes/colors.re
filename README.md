@@ -36,6 +36,26 @@ let myString =
 Js.log(myString); // White text with blue background, with highlighted word "my" in Green
 ```
 
+Or using the utils.
+
+```
+open ColorsUtils;
+
+let (<<) = ColorsUtils.compose;
+
+let (>>) = ColorsUtils.pipe;
+
+let composedStyle =
+  ColorsUtils.bold
+  << ColorsUtils.bgBlue
+  << ColorsUtils.underline
+  << ColorsUtils.green;
+
+Js.log(
+  composedStyle("This string will be bold, underlined with a blue background with green text")
+);
+```
+
 ## Types:
 
 ```
