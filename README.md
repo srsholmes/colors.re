@@ -1,6 +1,7 @@
 # colors.re
 
 [![Build Status](https://travis-ci.org/srsholmes/colors.re.svg?branch=master)](https://travis-ci.org/srsholmes/colors.re)
+[![Coverage Status](https://coveralls.io/repos/github/srsholmes/colors.re/badge.svg?branch=master)](https://coveralls.io/github/srsholmes/colors.re?branch=master)
 
 Terminal utility to display colours in your terminal written in reasonml. Very much inspired from [Chalk](https://github.com/chalk/chalk) and [Colors.js](https://github.com/Marak/colors.js), go check them out.
 
