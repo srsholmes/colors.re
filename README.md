@@ -19,11 +19,11 @@ And add the dependency to your bs-dependencies in `bsconfig.json`:
 ]
 ```
 
-The project will be available under the `Colors` namespace
-
 ## Usage:
 
 ```
+open Colors;
+
 let myString =
   colors(
     ~color=White,
