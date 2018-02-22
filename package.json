@@ -5,7 +5,8 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "coverage": "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
+    "coverage":
+      "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
     "test": "npm run build && jest --coverage && npm run coverage",
     "watch:jest": "jest --coverage --watchAll"
   },
@@ -24,16 +25,11 @@
     "logging",
     "logger"
   ],
-  "main": "lib/js/src/Colors.js",
   "homepage": "https://github.com/srsholmes/colors.re#readme",
   "repository": "https://github.com/srsholmes/colors.re",
   "bugs": "https://github.com/srsholmes/colors.re/issues",
   "author": "Simon Holmes",
   "license": "MIT",
-  "files": [
-    "src/",
-    "bsconfig.json"
-  ],
   "devDependencies": {
     "@glennsl/bs-jest": "^0.3.3",
     "bs-platform": "^2.1.0",
