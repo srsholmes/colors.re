@@ -15,131 +15,131 @@ let () =
         );
         test("bold", () =>
           expect(Utils.bold("bold"))
-          |> toBe(startWrap("1") ++ "bold" ++ endWrap("22"))
+          |> toBe([%raw {| '\u001b[1m' + 'bold' + '\u001b[22m' |}])
         );
         test("italic", () =>
           expect(Utils.italic("test"))
-          |> toBe(startWrap("3") ++ "test" ++ endWrap("23"))
+          |> toBe([%raw {| '\u001b[3m' + 'test' + '\u001b[23m' |}])
         );
         test("underline", () =>
           expect(Utils.underline("test"))
-          |> toBe(startWrap("4") ++ "test" ++ endWrap("24"))
+          |> toBe([%raw {| '\u001b[4m' + 'test' + '\u001b[24m' |}])
         );
         test("inverse", () =>
           expect(Utils.inverse("test"))
-          |> toBe(startWrap("7") ++ "test" ++ endWrap("27"))
+          |> toBe([%raw {| '\u001b[7m' + 'test' + '\u001b[27m' |}])
         );
         test("hidden", () =>
           expect(Utils.hidden("test"))
-          |> toBe(startWrap("8") ++ "test" ++ endWrap("28"))
+          |> toBe([%raw {| '\u001b[8m' + 'test' + '\u001b[28m' |}])
         );
         test("strikethrough", () =>
           expect(Utils.strikethrough("test"))
-          |> toBe(startWrap("9") ++ "test" ++ endWrap("29"))
+          |> toBe([%raw {| '\u001b[9m' + 'test' + '\u001b[29m' |}])
         );
         test("black", () =>
           expect(Utils.black("test"))
-          |> toBe(startWrap("30") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[30m' + 'test' + '\u001b[39m' |}])
         );
         test("red", () =>
           expect(Utils.red("test"))
-          |> toBe(startWrap("31") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[31m' + 'test' + '\u001b[39m' |}])
         );
         test("green", () =>
           expect(Utils.green("test"))
-          |> toBe(startWrap("32") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[32m' + 'test' + '\u001b[39m' |}])
         );
         test("yellow", () =>
           expect(Utils.yellow("test"))
-          |> toBe(startWrap("33") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[33m' + 'test' + '\u001b[39m' |}])
         );
         test("blue", () =>
           expect(Utils.blue("test"))
-          |> toBe(startWrap("34") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[34m' + 'test' + '\u001b[39m' |}])
         );
         test("magenta", () =>
           expect(Utils.magenta("test"))
-          |> toBe(startWrap("35") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[35m' + 'test' + '\u001b[39m' |}])
         );
         test("cyan", () =>
           expect(Utils.cyan("test"))
-          |> toBe(startWrap("36") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[36m' + 'test' + '\u001b[39m' |}])
         );
         test("white", () =>
           expect(Utils.white("test"))
-          |> toBe(startWrap("37") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[37m' + 'test' + '\u001b[39m' |}])
         );
         test("gray", () =>
           expect(Utils.gray("test"))
-          |> toBe(startWrap("90") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[90m' + 'test' + '\u001b[39m' |}])
         );
         test("grey", () =>
           expect(Utils.grey("test"))
-          |> toBe(startWrap("90") ++ "test" ++ endWrap("39"))
+          |> toBe([%raw {| '\u001b[90m' + 'test' + '\u001b[39m' |}])
         );
         test("bgBlack", () =>
           expect(Utils.bgBlack("test"))
-          |> toBe(startWrap("40") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[40m' + 'test' + '\u001b[49m' |}])
         );
         test("bgRed", () =>
           expect(Utils.bgRed("test"))
-          |> toBe(startWrap("41") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[41m' + 'test' + '\u001b[49m' |}])
         );
         test("bgGreen", () =>
           expect(Utils.bgGreen("test"))
-          |> toBe(startWrap("42") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[42m' + 'test' + '\u001b[49m' |}])
         );
         test("bgYellow", () =>
           expect(Utils.bgYellow("test"))
-          |> toBe(startWrap("43") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[43m' + 'test' + '\u001b[49m' |}])
         );
         test("bgBlue", () =>
           expect(Utils.bgBlue("test"))
-          |> toBe(startWrap("44") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[44m' + 'test' + '\u001b[49m' |}])
         );
         test("bgMagenta", () =>
           expect(Utils.bgMagenta("test"))
-          |> toBe(startWrap("45") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[45m' + 'test' + '\u001b[49m' |}])
         );
         test("bgCyan", () =>
           expect(Utils.bgCyan("test"))
-          |> toBe(startWrap("46") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[46m' + 'test' + '\u001b[49m' |}])
         );
         test("bgWhite", () =>
           expect(Utils.bgWhite("test"))
-          |> toBe(startWrap("47") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[47m' + 'test' + '\u001b[49m' |}])
         );
         test("bgBlackBright", () =>
           expect(Utils.bgBlackBright("test"))
-          |> toBe(startWrap("100") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[100m' + 'test' + '\u001b[49m' |}])
         );
         test("bgRedBright", () =>
           expect(Utils.bgRedBright("test"))
-          |> toBe(startWrap("101") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[101m' + 'test' + '\u001b[49m' |}])
         );
         test("bgGreenBright", () =>
           expect(Utils.bgGreenBright("test"))
-          |> toBe(startWrap("102") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[102m' + 'test' + '\u001b[49m' |}])
         );
         test("bgYellowBright", () =>
           expect(Utils.bgYellowBright("test"))
-          |> toBe(startWrap("103") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[103m' + 'test' + '\u001b[49m' |}])
         );
         test("bgBlueBright", () =>
           expect(Utils.bgBlueBright("test"))
-          |> toBe(startWrap("104") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[104m' + 'test' + '\u001b[49m' |}])
         );
         test("bgMagentaBright", () =>
           expect(Utils.bgMagentaBright("test"))
-          |> toBe(startWrap("105") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[105m' + 'test' + '\u001b[49m' |}])
         );
         test("bgCyanBright", () =>
           expect(Utils.bgCyanBright("test"))
-          |> toBe(startWrap("106") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[106m' + 'test' + '\u001b[49m' |}])
         );
         test("bgWhiteBright", () =>
           expect(Utils.bgWhiteBright("test"))
-          |> toBe(startWrap("107") ++ "test" ++ endWrap("49"))
+          |> toBe([%raw {| '\u001b[107m' + 'test' + '\u001b[49m' |}])
         );
       }
     )
