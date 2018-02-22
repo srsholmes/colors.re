@@ -5,6 +5,22 @@
 
 Terminal utility to display colours in your terminal written in reasonml. Very much inspired from [Chalk](https://github.com/chalk/chalk) and [Colors.js](https://github.com/Marak/colors.js), go check them out.
 
+## Installation
+
+Install the project:
+
+`npm install colors.re --save`
+
+And add the dependency to your bs-dependencies in `bsconfig.json`:
+
+```json
+"bs-dependencies": [
+  "colors.re"
+]
+```
+
+The project will be available under the `Colors` namespace
+
 ## Usage:
 
 ```
