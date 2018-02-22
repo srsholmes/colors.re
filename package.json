@@ -7,7 +7,7 @@
     "clean": "bsb -clean-world",
     "coverage":
       "nyc report --temp-directory=coverage --reporter=text-lcov | coveralls",
-    "test": "npm run build && jest --coverage && npm run coverage",
+    "test": "npm run build && jest --coverage",
     "watch:jest": "jest --coverage --watchAll"
   },
   "description": "Style terminal strings with ReasonMl.",

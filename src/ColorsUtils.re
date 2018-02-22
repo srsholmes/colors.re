@@ -6,7 +6,7 @@ let endWrap = v => {j|\u001b[$v|j} ++ "m";
 
 let wrap = ([head, last], str) => startWrap(head) ++ str ++ endWrap(last);
 
-module Utils = {
+module ColorsUtils = {
   type t;
   let compose = (f, g, x) => f(g(x));
   let pipe = (f, g, x) => g(f(x));
