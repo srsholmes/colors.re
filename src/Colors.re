@@ -65,7 +65,7 @@ let changeColor = (c, str) =>
   | BgWhiteBright => Colors_Utils.bgWhiteBright(str)
   };
 
-let changleColorNotKeyword = (color, keywordOptions, str) =>
+let changeColorNotKeyword = (color, keywordOptions, str) =>
   switch color {
   | Some(c) =>
     switch keywordOptions {
@@ -138,7 +138,7 @@ let colors = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
   let modifyStr =
     highlightKeyword(keywordOptions, str)
     |> modify(modifier)
-    |> changleColorNotKeyword(color, keywordOptions)
+    |> changeColorNotKeyword(color, keywordOptions)
     |> changeBackground(bg);
   modifyStr;
 };
