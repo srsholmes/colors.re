@@ -134,11 +134,8 @@ let changeBackground = (bg, str) =>
   | None => str
   };
 
-let colors = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
-  let modifyStr =
-    highlightKeyword(keywordOptions, str)
-    |> modify(modifier)
-    |> changeColorNotKeyword(color, keywordOptions)
-    |> changeBackground(bg);
-  modifyStr;
-};
+let colors = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) =>
+  highlightKeyword(keywordOptions, str)
+  |> modify(modifier)
+  |> changeColorNotKeyword(color, keywordOptions)
+  |> changeBackground(bg);
