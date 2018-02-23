@@ -7,7 +7,8 @@ let safeGetEnv = str =>
 
 let getOS = () => Sys.os_type;
 
-let convertEnvToBool = str => safeGetEnv(str) !== notFoundStr ? true : false;
+/* TODO: Sort out the terminal colors for different node versions */
+let isWindowsColorTerm = () => getOS() === "Win32" ? 1 : 0;
 
 let isTerminal256 = () => {
   let termEnv = safeGetEnv("TERM");
@@ -84,15 +85,13 @@ let isColorCompatibleCi = () => {
     0;
 };
 
-let supportsColors = () => {
-  Js.log("IS CI");
-  let ci = isColorCompatibleCi();
-  Js.log(ci);
-  let tc = isTeamCityCompatible();
-  Js.log("IS TEAM CITY");
-  Js.log(tc);
-  Js.log("IS FANCY TERMINAL");
-  Js.log(isFancyTerminal());
-};
+let supportsColors = () => [
+  isColorCompatibleCi(),
+  isTeamCityCompatible(),
+  isWindowsColorTerm(),
+  isColorTerm(),
+  isBasicTerminal(),
+  isFancyTerminal()
+];
 
-supportsColors();
+let test = supportsColors() |> List.fold_left(Pervasives.max, 0);
