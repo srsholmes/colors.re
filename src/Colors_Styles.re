@@ -1,4 +1,4 @@
-module Styles = {
+module Colors_Styles = {
   let reset = ["0", "0"];
   let bold = ["1", "22"];
   let dim = ["2", "22"];

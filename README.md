@@ -39,17 +39,17 @@ Js.log(myString); // White text with blue background, with highlighted word "my"
 Or using the utils.
 
 ```
-open ColorsUtils;
+open Colors_Utils;
 
-let (<<) = ColorsUtils.compose;
+let (<<) = Colors_Utils.compose;
 
-let (>>) = ColorsUtils.pipe;
+let (>>) = Colors_Utils.pipe;
 
 let composedStyle =
-  ColorsUtils.bold
-  << ColorsUtils.bgBlue
-  << ColorsUtils.underline
-  << ColorsUtils.green;
+  Colors_Utils.bold
+  << Colors_Utils.bgBlue
+  << Colors_Utils.underline
+  << Colors_Utils.green;
 
 Js.log(
   composedStyle("This string will be bold, underlined with a blue background with green text")

@@ -1,10 +1,10 @@
 open Jest;
 
-open ColorsUtils;
+open Colors_Utils;
 
 let () =
   describe(
-    "colors.re ColorsUtils and Styles",
+    "colors.re Colors_Utils and Styles",
     ExpectJs.(
       () => {
         test("startWrap", () =>
@@ -14,131 +14,131 @@ let () =
           expect(endWrap("end")) |> toBe({j|\u001b[end|j} ++ "m")
         );
         test("bold", () =>
-          expect(ColorsUtils.bold("bold"))
+          expect(Colors_Utils.bold("bold"))
           |> toBe([%raw {| '\u001b[1m' + 'bold' + '\u001b[22m' |}])
         );
         test("italic", () =>
-          expect(ColorsUtils.italic("test"))
+          expect(Colors_Utils.italic("test"))
           |> toBe([%raw {| '\u001b[3m' + 'test' + '\u001b[23m' |}])
         );
         test("underline", () =>
-          expect(ColorsUtils.underline("test"))
+          expect(Colors_Utils.underline("test"))
           |> toBe([%raw {| '\u001b[4m' + 'test' + '\u001b[24m' |}])
         );
         test("inverse", () =>
-          expect(ColorsUtils.inverse("test"))
+          expect(Colors_Utils.inverse("test"))
           |> toBe([%raw {| '\u001b[7m' + 'test' + '\u001b[27m' |}])
         );
         test("hidden", () =>
-          expect(ColorsUtils.hidden("test"))
+          expect(Colors_Utils.hidden("test"))
           |> toBe([%raw {| '\u001b[8m' + 'test' + '\u001b[28m' |}])
         );
         test("strikethrough", () =>
-          expect(ColorsUtils.strikethrough("test"))
+          expect(Colors_Utils.strikethrough("test"))
           |> toBe([%raw {| '\u001b[9m' + 'test' + '\u001b[29m' |}])
         );
         test("black", () =>
-          expect(ColorsUtils.black("test"))
+          expect(Colors_Utils.black("test"))
           |> toBe([%raw {| '\u001b[30m' + 'test' + '\u001b[39m' |}])
         );
         test("red", () =>
-          expect(ColorsUtils.red("test"))
+          expect(Colors_Utils.red("test"))
           |> toBe([%raw {| '\u001b[31m' + 'test' + '\u001b[39m' |}])
         );
         test("green", () =>
-          expect(ColorsUtils.green("test"))
+          expect(Colors_Utils.green("test"))
           |> toBe([%raw {| '\u001b[32m' + 'test' + '\u001b[39m' |}])
         );
         test("yellow", () =>
-          expect(ColorsUtils.yellow("test"))
+          expect(Colors_Utils.yellow("test"))
           |> toBe([%raw {| '\u001b[33m' + 'test' + '\u001b[39m' |}])
         );
         test("blue", () =>
-          expect(ColorsUtils.blue("test"))
+          expect(Colors_Utils.blue("test"))
           |> toBe([%raw {| '\u001b[34m' + 'test' + '\u001b[39m' |}])
         );
         test("magenta", () =>
-          expect(ColorsUtils.magenta("test"))
+          expect(Colors_Utils.magenta("test"))
           |> toBe([%raw {| '\u001b[35m' + 'test' + '\u001b[39m' |}])
         );
         test("cyan", () =>
-          expect(ColorsUtils.cyan("test"))
+          expect(Colors_Utils.cyan("test"))
           |> toBe([%raw {| '\u001b[36m' + 'test' + '\u001b[39m' |}])
         );
         test("white", () =>
-          expect(ColorsUtils.white("test"))
+          expect(Colors_Utils.white("test"))
           |> toBe([%raw {| '\u001b[37m' + 'test' + '\u001b[39m' |}])
         );
         test("gray", () =>
-          expect(ColorsUtils.gray("test"))
+          expect(Colors_Utils.gray("test"))
           |> toBe([%raw {| '\u001b[90m' + 'test' + '\u001b[39m' |}])
         );
         test("grey", () =>
-          expect(ColorsUtils.grey("test"))
+          expect(Colors_Utils.grey("test"))
           |> toBe([%raw {| '\u001b[90m' + 'test' + '\u001b[39m' |}])
         );
         test("bgBlack", () =>
-          expect(ColorsUtils.bgBlack("test"))
+          expect(Colors_Utils.bgBlack("test"))
           |> toBe([%raw {| '\u001b[40m' + 'test' + '\u001b[49m' |}])
         );
         test("bgRed", () =>
-          expect(ColorsUtils.bgRed("test"))
+          expect(Colors_Utils.bgRed("test"))
           |> toBe([%raw {| '\u001b[41m' + 'test' + '\u001b[49m' |}])
         );
         test("bgGreen", () =>
-          expect(ColorsUtils.bgGreen("test"))
+          expect(Colors_Utils.bgGreen("test"))
           |> toBe([%raw {| '\u001b[42m' + 'test' + '\u001b[49m' |}])
         );
         test("bgYellow", () =>
-          expect(ColorsUtils.bgYellow("test"))
+          expect(Colors_Utils.bgYellow("test"))
           |> toBe([%raw {| '\u001b[43m' + 'test' + '\u001b[49m' |}])
         );
         test("bgBlue", () =>
-          expect(ColorsUtils.bgBlue("test"))
+          expect(Colors_Utils.bgBlue("test"))
           |> toBe([%raw {| '\u001b[44m' + 'test' + '\u001b[49m' |}])
         );
         test("bgMagenta", () =>
-          expect(ColorsUtils.bgMagenta("test"))
+          expect(Colors_Utils.bgMagenta("test"))
           |> toBe([%raw {| '\u001b[45m' + 'test' + '\u001b[49m' |}])
         );
         test("bgCyan", () =>
-          expect(ColorsUtils.bgCyan("test"))
+          expect(Colors_Utils.bgCyan("test"))
           |> toBe([%raw {| '\u001b[46m' + 'test' + '\u001b[49m' |}])
         );
         test("bgWhite", () =>
-          expect(ColorsUtils.bgWhite("test"))
+          expect(Colors_Utils.bgWhite("test"))
           |> toBe([%raw {| '\u001b[47m' + 'test' + '\u001b[49m' |}])
         );
         test("bgBlackBright", () =>
-          expect(ColorsUtils.bgBlackBright("test"))
+          expect(Colors_Utils.bgBlackBright("test"))
           |> toBe([%raw {| '\u001b[100m' + 'test' + '\u001b[49m' |}])
         );
         test("bgRedBright", () =>
-          expect(ColorsUtils.bgRedBright("test"))
+          expect(Colors_Utils.bgRedBright("test"))
           |> toBe([%raw {| '\u001b[101m' + 'test' + '\u001b[49m' |}])
         );
         test("bgGreenBright", () =>
-          expect(ColorsUtils.bgGreenBright("test"))
+          expect(Colors_Utils.bgGreenBright("test"))
           |> toBe([%raw {| '\u001b[102m' + 'test' + '\u001b[49m' |}])
         );
         test("bgYellowBright", () =>
-          expect(ColorsUtils.bgYellowBright("test"))
+          expect(Colors_Utils.bgYellowBright("test"))
           |> toBe([%raw {| '\u001b[103m' + 'test' + '\u001b[49m' |}])
         );
         test("bgBlueBright", () =>
-          expect(ColorsUtils.bgBlueBright("test"))
+          expect(Colors_Utils.bgBlueBright("test"))
           |> toBe([%raw {| '\u001b[104m' + 'test' + '\u001b[49m' |}])
         );
         test("bgMagentaBright", () =>
-          expect(ColorsUtils.bgMagentaBright("test"))
+          expect(Colors_Utils.bgMagentaBright("test"))
           |> toBe([%raw {| '\u001b[105m' + 'test' + '\u001b[49m' |}])
         );
         test("bgCyanBright", () =>
-          expect(ColorsUtils.bgCyanBright("test"))
+          expect(Colors_Utils.bgCyanBright("test"))
           |> toBe([%raw {| '\u001b[106m' + 'test' + '\u001b[49m' |}])
         );
         test("bgWhiteBright", () =>
-          expect(ColorsUtils.bgWhiteBright("test"))
+          expect(Colors_Utils.bgWhiteBright("test"))
           |> toBe([%raw {| '\u001b[107m' + 'test' + '\u001b[49m' |}])
         );
       }

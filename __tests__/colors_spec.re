@@ -14,35 +14,34 @@ let () =
           expect(colors(~modifier=Bold, "Bold"))
           |> toBe([%raw {| '\u001b[1m' + 'Bold' + '\u001b[22m' |}])
         );
-         test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Reset, "Reset"))
           |> toBe([%raw {| '\u001b[0m' + 'Reset' + '\u001b[0m' |}])
         );
-          test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Dim, "Dim"))
           |> toBe([%raw {| '\u001b[2m' + 'Dim' + '\u001b[22m' |}])
         );
-           test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Italic, "Italic"))
           |> toBe([%raw {| '\u001b[3m' + 'Italic' + '\u001b[23m' |}])
         );
-            test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Underline, "Underline"))
           |> toBe([%raw {| '\u001b[4m' + 'Underline' + '\u001b[24m' |}])
         );
-             test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Inverse, "Inverse"))
           |> toBe([%raw {| '\u001b[7m' + 'Inverse' + '\u001b[27m' |}])
         );
-              test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Hidden, "Hidden"))
           |> toBe([%raw {| '\u001b[8m' + 'Hidden' + '\u001b[28m' |}])
         );
-               test("colors should apply modifiers", () =>
+        test("colors should apply modifiers", () =>
           expect(colors(~modifier=Strikethrough, "Strikethrough"))
           |> toBe([%raw {| '\u001b[9m' + 'Strikethrough' + '\u001b[29m' |}])
         );
-
         test("colors should apply color Red", () =>
           expect(colors(~color=Red, "Red"))
           |> toBe([%raw {| '\u001b[31m' + 'Red' + '\u001b[39m' |}])
@@ -121,7 +120,9 @@ let () =
         );
         test("colors should apply color BgMagentaBright", () =>
           expect(colors(~color=BgMagentaBright, "BgMagentaBright"))
-          |> toBe([%raw {| '\u001b[105m' + 'BgMagentaBright' + '\u001b[49m' |}])
+          |> toBe(
+               [%raw {| '\u001b[105m' + 'BgMagentaBright' + '\u001b[49m' |}]
+             )
         );
         test("colors should apply color BgCyanBright", () =>
           expect(colors(~color=BgCyanBright, "BgCyanBright"))
@@ -181,7 +182,9 @@ let () =
         );
         test("colors should apply color BgMagentaBright", () =>
           expect(colors(~bg=BgMagentaBright, "BgMagentaBright"))
-          |> toBe([%raw {| '\u001b[105m' + 'BgMagentaBright' + '\u001b[49m' |}])
+          |> toBe(
+               [%raw {| '\u001b[105m' + 'BgMagentaBright' + '\u001b[49m' |}]
+             )
         );
         test("colors should apply color BgCyanBright", () =>
           expect(colors(~bg=BgCyanBright, "BgCyanBright"))
