@@ -65,25 +65,7 @@ let changeColor = (c, str) =>
   | BgWhiteBright => Colors_Utils.bgWhiteBright(str)
   };
 
-let modify = (m, str) =>
-  switch m {
-  | Reset => Colors_Utils.reset(str)
-  | Bold => Colors_Utils.bold(str)
-  | Dim => Colors_Utils.dim(str)
-  | Italic => Colors_Utils.italic(str)
-  | Underline => Colors_Utils.underline(str)
-  | Inverse => Colors_Utils.inverse(str)
-  | Hidden => Colors_Utils.hidden(str)
-  | Strikethrough => Colors_Utils.strikethrough(str)
-  };
-
-let changeKeyword = (keyword, str, color) => {
-  let containsString = Js.String.includes(keyword, str);
-  containsString ?
-    Js.String.replace(keyword, changeColor(color, keyword), str) : str;
-};
-
-let doColorChange = (color, keywordOptions, str) =>
+let changleColorNotKeyword = (color, keywordOptions, str) =>
   switch color {
   | Some(c) =>
     switch keywordOptions {
@@ -97,55 +79,66 @@ let doColorChange = (color, keywordOptions, str) =>
   | None => str
   };
 
-let doModifier = (modifier, str) =>
+let modify = (modifier, str) =>
   switch modifier {
-  | Some(m) => modify(m, str)
+  | Some(m) =>
+    switch m {
+    | Reset => Colors_Utils.reset(str)
+    | Bold => Colors_Utils.bold(str)
+    | Dim => Colors_Utils.dim(str)
+    | Italic => Colors_Utils.italic(str)
+    | Underline => Colors_Utils.underline(str)
+    | Inverse => Colors_Utils.inverse(str)
+    | Hidden => Colors_Utils.hidden(str)
+    | Strikethrough => Colors_Utils.strikethrough(str)
+    }
   | None => str
   };
 
 let highlightKeyword = (options, str) =>
   switch options {
-  | Some({colorType, word}) => changeKeyword(word, str, colorType)
+  | Some({colorType, word}) =>
+    let containsString = Js.String.includes(word, str);
+    containsString ?
+      Js.String.replace(word, changeColor(colorType, word), str) : str;
   | None => str
   };
 
-let changeBackground = (c, str) =>
-  switch c {
-  | Red => Colors_Utils.bgRed(str)
-  | Yellow => Colors_Utils.bgYellow(str)
-  | Green => Colors_Utils.bgGreen(str)
-  | Blue => Colors_Utils.bgBlue(str)
-  | Magenta => Colors_Utils.bgMagenta(str)
-  | Cyan => Colors_Utils.bgCyan(str)
-  | White => Colors_Utils.bgWhite(str)
-  | BgBlack => Colors_Utils.bgBlack(str)
-  | BgRed => Colors_Utils.bgRed(str)
-  | BgGreen => Colors_Utils.bgGreen(str)
-  | BgYellow => Colors_Utils.bgYellow(str)
-  | BgBlue => Colors_Utils.bgBlue(str)
-  | BgMagenta => Colors_Utils.bgMagenta(str)
-  | BgCyan => Colors_Utils.bgCyan(str)
-  | BgWhite => Colors_Utils.bgWhite(str)
-  | BgRedBright => Colors_Utils.bgRedBright(str)
-  | BgGreenBright => Colors_Utils.bgGreenBright(str)
-  | BgYellowBright => Colors_Utils.bgYellowBright(str)
-  | BgBlueBright => Colors_Utils.bgBlueBright(str)
-  | BgMagentaBright => Colors_Utils.bgMagentaBright(str)
-  | BgCyanBright => Colors_Utils.bgCyanBright(str)
-  | BgWhiteBright => Colors_Utils.bgWhiteBright(str)
-  };
-
-let applyBackgroud = (bg, str) =>
+let changeBackground = (bg, str) =>
   switch bg {
-  | Some(b) => changeBackground(b, str)
+  | Some(b) =>
+    switch b {
+    | Red => Colors_Utils.bgRed(str)
+    | Yellow => Colors_Utils.bgYellow(str)
+    | Green => Colors_Utils.bgGreen(str)
+    | Blue => Colors_Utils.bgBlue(str)
+    | Magenta => Colors_Utils.bgMagenta(str)
+    | Cyan => Colors_Utils.bgCyan(str)
+    | White => Colors_Utils.bgWhite(str)
+    | BgBlack => Colors_Utils.bgBlack(str)
+    | BgRed => Colors_Utils.bgRed(str)
+    | BgGreen => Colors_Utils.bgGreen(str)
+    | BgYellow => Colors_Utils.bgYellow(str)
+    | BgBlue => Colors_Utils.bgBlue(str)
+    | BgMagenta => Colors_Utils.bgMagenta(str)
+    | BgCyan => Colors_Utils.bgCyan(str)
+    | BgWhite => Colors_Utils.bgWhite(str)
+    | BgRedBright => Colors_Utils.bgRedBright(str)
+    | BgGreenBright => Colors_Utils.bgGreenBright(str)
+    | BgYellowBright => Colors_Utils.bgYellowBright(str)
+    | BgBlueBright => Colors_Utils.bgBlueBright(str)
+    | BgMagentaBright => Colors_Utils.bgMagentaBright(str)
+    | BgCyanBright => Colors_Utils.bgCyanBright(str)
+    | BgWhiteBright => Colors_Utils.bgWhiteBright(str)
+    }
   | None => str
   };
 
 let colors = (~color=?, ~bg=?, ~modifier=?, ~keywordOptions=?, str) => {
   let modifyStr =
     highlightKeyword(keywordOptions, str)
-    |> doModifier(modifier)
-    |> doColorChange(color, keywordOptions)
-    |> applyBackgroud(bg);
+    |> modify(modifier)
+    |> changleColorNotKeyword(color, keywordOptions)
+    |> changeBackground(bg);
   modifyStr;
 };
