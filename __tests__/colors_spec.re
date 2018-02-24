@@ -233,6 +233,10 @@ let () =
           )
           |> toBe(changeColor(Red, "Hello") ++ " World")
         );
+        test(
+          "hightlightKeyword should return string if no options are passed", () =>
+          expect(highlightKeyword(None, "Hello World")) |> toBe("Hello World")
+        );
       }
     )
   );
