@@ -13,6 +13,11 @@ let () =
         test("endWrap", () =>
           expect(endWrap("end")) |> toBe({j|\u001b[end|j} ++ "m")
         );
+        test("wrap will throw with incorrect args", () =>
+          expect(() =>
+            wrap(["test"], "throw")
+          ) |> toThrow
+        );
         test("bold", () =>
           expect(Colors_Utils.bold("bold"))
           |> toBe([%raw {| '\u001b[1m' + 'bold' + '\u001b[22m' |}])

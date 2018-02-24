@@ -209,6 +209,10 @@ let () =
                [%raw {| 'Hello ' + '\u001b[32m' + 'World' + '\u001b[39m' |}]
              )
         );
+        test("colors should not hightlight keyword if no options", () =>
+          expect(highlightKeyword(None, "Hello World"))
+          |> toBe([%raw {| 'Hello World' |}])
+        );
         test("colors should apply multiple changes to a string", () =>
           expect(colors(~bg=BgRed, ~color=Blue, "start"))
           |> toBe(
@@ -216,6 +220,18 @@ let () =
                  {| '\u001b[41m' + '\u001b[34m' + 'start' + '\u001b[39m' + '\u001b[49m' |}
                ]
              )
+        );
+        test(
+          "changeColorNotKeyword should only change the colors of the words that aren't the keyword",
+          () =>
+          expect(
+            changeColorNotKeyword(
+              Some(Red),
+              Some({colorType: Green, word: "World"}),
+              "Hello World"
+            )
+          )
+          |> toBe(changeColor(Red, "Hello") ++ " World")
         );
       }
     )
