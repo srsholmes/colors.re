@@ -85,7 +85,9 @@ let isColorCompatibleCi = () => {
     0;
 };
 
-let supportsColors = () => [
+let supportsColors = List.fold_left(Pervasives.max, 0);
+
+let detectList = [
   isColorCompatibleCi(),
   isTeamCityCompatible(),
   isWindowsColorTerm(),
@@ -94,4 +96,4 @@ let supportsColors = () => [
   isFancyTerminal()
 ];
 
-let test = supportsColors() |> List.fold_left(Pervasives.max, 0);
+let support = supportsColors(detectList);
