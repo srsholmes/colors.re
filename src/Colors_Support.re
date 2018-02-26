@@ -26,7 +26,6 @@ let isTerminal256 = () => {
 
 let isFancyTerminal = () => {
   let termEnv = safeGetEnv("TERM_PROGRAM");
-  Js.log(termEnv);
   termEnv !== notFoundStr ?
     /* This will fail in terms without "TERM_PROGRAM_VERSION" */
     switch termEnv {
