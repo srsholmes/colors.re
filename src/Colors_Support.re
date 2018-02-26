@@ -26,18 +26,19 @@ let isTerminal256 = () => {
 
 let isFancyTerminal = () => {
   let termEnv = safeGetEnv("TERM_PROGRAM");
+  Js.log(termEnv);
   termEnv !== notFoundStr ?
-    {
-      let version =
-        int_of_string(
-          Js.String.split(".", safeGetEnv("TERM_PROGRAM_VERSION"))[0]
-        );
-      switch termEnv {
-      | "iTerm.app" => version >= 3 ? 3 : 2
-      | "Hyper" => 3
-      | "Apple_Terminal" => 2
-      | _ => 0
-      };
+    /* This will fail in terms without "TERM_PROGRAM_VERSION" */
+    switch termEnv {
+    | "iTerm.app" =>
+      int_of_string(
+        Js.String.split(".", safeGetEnv("TERM_PROGRAM_VERSION"))[0]
+      )
+      >= 3 ?
+        3 : 2
+    | "Hyper" => 3
+    | "Apple_Terminal" => 2
+    | _ => 0
     } :
     2;
 };
@@ -85,7 +86,7 @@ let isColorCompatibleCi = () => {
     0;
 };
 
-let supportsColors = List.fold_left(Pervasives.max, 0);
+let findMax = List.fold_left(Pervasives.max, 0);
 
 let detectList = [
   isColorCompatibleCi(),
@@ -96,4 +97,4 @@ let detectList = [
   isFancyTerminal()
 ];
 
-let support = supportsColors(detectList);
+let support = findMax(detectList);
