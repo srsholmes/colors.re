@@ -45,9 +45,10 @@ let () =
           [%raw {| process.env.TEAMCITY_VERSION = '9.1.5 (build 32523)'|}];
           expect(isTeamCityCompatible()) |> toBe(1);
         });
-        test("isColorTerm returns 0 if NO COLORTERM", () =>
-          expect(isColorTerm()) |> toBe(0)
-        );
+        test("isColorTerm returns 0 if NO COLORTERM", () => {
+          [%raw {| delete process.env.COLORTERM |}];
+          expect(isColorTerm()) |> toBe(0);
+        });
         test("isColorTerm returns 1 if COLORTERM", () => {
           [%raw {| process.env.COLORTERM = 'true'|}];
           expect(isColorTerm()) |> toBe(1);
