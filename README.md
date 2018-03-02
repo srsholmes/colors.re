@@ -24,8 +24,8 @@ And add the dependency to your bs-dependencies in `bsconfig.json`:
 ```
 open Colors;
 
-let redString = changeColor(Red, "Red String");
-let redBgString = changeBackground(Red, "String with red background");
+let redString = chnageColor(Red, "Red String");
+let redBgString = chnageBackground(Red, "String with red background");
 let modifyString = modify(Bold, "Bold String");
 
 let myString =
